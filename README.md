@@ -32,4 +32,4 @@ peakPower
 
 The latter methods are used if they exist. Otherwise the former methods are called, with a channel of 0 unless you explicitly set the <code>AudioMeterView</code>'s <code>channel</code> attribute.
 
-The meter begins displaying when you set the <code>AudioMeterView</code>'s <code>input</code>. When you set <code>input</code> to <code>nil</code>, the meter lights gradually fall to zero.
+The meter begins displaying when you set the <code>AudioMeterView</code>'s <code>input</code> to an appropriate object. When you set <code>input</code> to <code>nil</code>, the meter lights gradually fall to zero.
