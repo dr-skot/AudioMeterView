@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 $:.unshift("/Library/RubyMotion/lib")
 require 'motion/project'
-require 'rubygems'
-require 'motion-stump'
+
+if RUBYMOTION_ENV == 'test'
+   require 'rubygems'
+   require 'motion-stump'
+end
 
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.

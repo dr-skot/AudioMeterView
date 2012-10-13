@@ -52,10 +52,17 @@ class LevelMeterView < UIView
     end
   end
 
+  def clear
+    @needsClearing = true
+    setNeedsDisplay
+  end
+
   def drawRect(rect)
 
     cxt = UIGraphicsGetCurrentContext()
     cs = CGColorSpaceCreateDeviceRGB()
+
+    CGContextClearRect(cxt, bounds) if @needsClearing
     
     CGContextSetFillColorSpace(cxt, cs)
     CGContextSetStrokeColorSpace(cxt, cs)

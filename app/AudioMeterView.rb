@@ -36,6 +36,10 @@ class AudioMeterView < UIView
       refresh
     end
   end
+
+  def clear
+    @meter.clear
+  end
   
   def falloff
     thisTick = Time.now
