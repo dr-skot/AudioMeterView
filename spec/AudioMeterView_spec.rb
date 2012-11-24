@@ -6,6 +6,11 @@ describe "AudioMeterView" do
     @recorder = stub(:averagePower, :return => -10)
     @recorder.stub!(:peakPower, :return => -5)
     @recorder.stub!(:updateMeters)
+    @recorder.stub!(:respond_to?) do |fn|
+      fn == :averagePower || fn == :peakPower
+    end    
+    # @recorder.stub!(:averagePowerForChannel, :return => -10) {|chan|}
+    # @recorder.stub!(:peakPowerForChannel, :return => -5) {|chan|}
   end
 
   after do
@@ -21,6 +26,15 @@ describe "AudioMeterView" do
     it "should return a value for peak power" do
       @recorder.peakPower.should == -5
     end
+
+    it "responds to averagePower" do
+      @reorder.respond_to?(:averagePower).should == true
+    end
+
+    it "responds to peakPower" do
+      @reorder.respond_to?(:peakPower).should == true
+    end
+
   end
   
   it "should start its timer when you give it a recorder" do
